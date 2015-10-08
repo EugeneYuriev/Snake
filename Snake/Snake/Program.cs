@@ -10,31 +10,53 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            /*
+            
             Point p1 = new Point(2,5,'*');
-            p1.Draw();
+            //p1.Draw();
 
-            Point p2 = new Point(4, 2, '*');
-            p2.Draw();
-            */
+            Point p2 = new Point(4, 3, '*');
+            //p2.Draw();
+            
+            
+            List<int> numList = new List<int>();
 
-            int x;
-            x = 1;
-            Console.WriteLine(x);
-            func1(x);
-            Console.WriteLine(x);
+            numList.Add(5);
+            numList.Add(7);
+            numList.Add(9);
+
+            int x = numList[0];
+            int y = numList[1];
+            int z = numList[2];
+
+            foreach (int i in numList)
+            {
+                Console.WriteLine(i);
+            }
+
+            List<Point> PointList = new List<Point>();
+
+            PointList.Add(p1);
+            PointList.Add(p2);
 
 
-            Point p1 = new Point(1, 1, '*');
-            Point p2 = new Point();
+            List<char> cList = new List<char>();
 
-            //p2 = p1;
-            Copy(p2,p1);
+            cList.Add('@');
+            cList.Add('$');
+            cList.Add('%');
+            cList.Add('&');
 
-            p2.x = 2;
-            p2.y = 2;
+            foreach (char i in cList)
+            {
+                Console.Write(i);
+            }
+            Console.WriteLine();
 
-            Console.WriteLine("p1.x=" + p1.x + ", p1.y=" + p1.y);
+            cList.RemoveAt(1);
+            foreach (char i in cList)
+            {
+                Console.Write(i);
+            }
 
             Console.ReadLine();
         }
