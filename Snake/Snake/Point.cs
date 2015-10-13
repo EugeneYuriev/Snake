@@ -42,12 +42,18 @@ namespace Snake
             }
             else if (direction == Direction.UP)
             {
-                y = y + offset;
+                y = y - offset;
             }
             else if (direction == Direction.DOWN)
             {
-                y = y - offset;
+                y = y + offset;
             }
+        }
+
+        internal void Clear()
+        {
+            sym = ' ';
+            Draw();
         }
 
         public void Draw()
@@ -59,6 +65,11 @@ namespace Snake
         public override string ToString()
         {
             return x + ", " + y + ", " + sym;
+        }
+
+        internal bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
         }
     }
 }

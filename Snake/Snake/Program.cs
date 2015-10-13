@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
@@ -24,10 +25,42 @@ namespace Snake
             rightLine.Draw();
 
             Point p = new Point(2, 2, '*');
-            Snake snake = new Snake(p, 10, Direction.UP);
+            Snake snake = new Snake(p, 3, Direction.RIGHT);
             snake.Draw();
 
-            Console.ReadLine();
+            FoodCreator foodCreator = new FoodCreator(80, 25, '@');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
+            while (true)
+            {
+                if (snake.CheckPosition(78, 24))
+                {
+                    if (snake.Eat(food))
+                    {
+                        food = foodCreator.CreateFood();
+                        food.Draw();
+                    }
+                    else
+                    {
+                        snake.Move();
+                    }
+
+                    Thread.Sleep(100);
+
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo key = Console.ReadKey();
+                        snake.HandleKey(key.Key);
+                    }
+                }
+                else
+                    break;
+                
+            }
+            
+
+            //Console.ReadLine();
         }
 
     }
