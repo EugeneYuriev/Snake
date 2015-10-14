@@ -35,6 +35,20 @@ namespace Snake
             head.Draw();
         }
 
+        internal bool IsHitTail()
+        {
+            //var head = pList.Last();
+
+            Point nextPoint = GetNextPoint();
+
+            for (int i = 0; i < pList.Count - 2; i++)
+            {
+                if (nextPoint.IsHit(pList[i]))
+                    return true;
+            }
+            return false;
+        }
+
         private Point GetNextPoint()
         {
             Point head = pList.Last();
@@ -54,6 +68,12 @@ namespace Snake
                 direction = Direction.DOWN;
             else if (key == ConsoleKey.UpArrow)
                 direction = Direction.UP;
+        }
+
+        internal int GetLength()
+        {
+            return pList.Count;
+
         }
 
         internal bool CheckPosition(int xBoundary, int yBoundary)
